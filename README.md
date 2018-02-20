@@ -26,6 +26,7 @@
    1. RClick project name in *Solution Explorer* window - Select *Publish Web Site*.
    1. Select *Microsoft Azure App Service* as the publish target.
    1. Create new AppService (or choose existing one if you already created one).
+		![Create App Service](images/CreateAppService.png)
    1. Publish the website to Azure and check the result.
-
+		![Publish](images/Publish.png)
 1. Change anything and re-publish the result to Azure.
