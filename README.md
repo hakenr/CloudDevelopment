@@ -49,18 +49,28 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 1. Create new Azure SQL server and database:
    1. Go to [Azure Portal](https://portal.azure.com) and use *Create Resource* button in left panel to create a new *SQL Database*.
    2. Fill in the name and other properties of the DB + create a new SQL server to host the DB ()
+
       ![Create Sql Database](images/CreateSqlDatabase.png)
+
 1. In Visual Studio open new SQL Query window for the new DB
 
 	Note: In practice you usualy use [Microsoft SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) or [Microsoft SQL Server Operations Studio](https://docs.microsoft.com/en-us/sql/sql-operations-studio/download) to perform DB-related development/management tasks. In this lab we will use plain Visual Studio to demonstrate an alternate option.
    1. In Visual Studio open *Cloud Explorer* panel (you can use *Quick Launch*) and navigate to your database - *SQL Databases* / *Open SQL Server Object Explorer* (r-click)
+
       ![Cloud Explorer Sql](images/CloudExplorerSql.png)
-   2. Connect to your Azure SQL server
+
+	  2. Connect to your Azure SQL server
+
       ![Connect Azure Sql](images/ConnectAzureSql.png)
-   3. Confirm adding of your current IP address to Azure SQL Server firewall (You can check firewall rules using Azure Portal - Go to you SQL Server and see *Firewall / Network Settings* section)
+
+	  3. Confirm adding of your current IP address to Azure SQL Server firewall (You can check firewall rules using Azure Portal - Go to you SQL Server and see *Firewall / Network Settings* section)
+
       ![Visual Studio Azure Sql Server Firewall](images/VisualStudioAzureSqlServerFirewall.png)
+
    4. In *SQL Server Object Explorer* navigate to your DB and open *New query...* (r-click)
+
       ![New Query](images/NewQuery.png)
+
 1. Create the *EmailQueue* table in your DB:
 	``` sql
 	CREATE TABLE dbo.EmailQueue	(
@@ -150,11 +160,14 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 	</appSettings>
 	```
 1. Publish the result as Azure Web Job...
+ 
 	![Publish Azure Web Job](images/PublishAzureWebJob.png)
 
 	Note: The job will be failing now. We have to set the production Application Settings.
 
 1. [OPTIONAL] Create a new SendGrid account in Azure and use it's credentials to send mails.
 1. Go to Azure Portal, locate the App Service hosting the WebJob and set appropriate Application Settings (ConnectionStrings and AppSettings):
+
 	![App Settings](images/AppSettings.png)
+
 1. Try the job by adding a row to EmailQueue table.
