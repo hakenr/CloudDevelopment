@@ -174,4 +174,77 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 ## LAB3 - Application Insights [Jiøí Kanda]
 1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
+	1. You can easily create one through navigating to your App Service - Application Insights blade:
+
+		![App Insights](images/AppInsights.png)
+
+	2. Check *Application Settings* section - there is a new `APPINSIGHTS_INSTRUMENTATIONKEY` setting added automatically (If not, create one on your own - you can find the instrumentation key in *Properties* section of the Application Insights service.)
 2. Install Application Install `Microsoft.ApplicationInsights.Web` NuGet Package to the Web Application project created in LAB1 and publish the project to Azure.
+
+## LAB4 - Azure Storage Account - Blobs
+[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows)
+1. In Azure Portal create a new Azure Storage Account - *StorageV2 (general purpose v2)*. Familiarize yourself with the configuration options available:
+
+	![Storage Account](images/StorageAccount.png)
+
+1. Add new container to the Blob service section of the storage account created:
+
+	![Storage Account New Blob Container](images/StorageAccount-NewBlobContainer.png)
+
+1. Install `Windows.AzureStorage` NuGet package to both WebApplication and WebJob projects in your solution.
+
+1. In your Web Application, add a simple form which uploads a file to the blob container you created earlier.
+	1. Add *FileUpload* control and a *Button* to your `Default.aspx` page
+		```html
+		<asp:FileUpload ID="MyFileUpload" runat="server" />
+		<asp:Button ID="GoButton" Text="GO!" OnClick="GoButton_Click" runat="server" />
+		```
+	1. Add button-click handler to the `Default.aspx.cs` file
+		```csharp
+		protected void GoButton_Click(object sender, EventArgs e)
+		{
+			if (MyFileUpload.HasFile)
+			{
+				var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+				var blobClient = storageAccount.CreateCloudBlobClient();
+				var containerReference = blobClient.GetContainerReference("test"); // namo of your container
+
+				var blobReference = containerReference.GetBlockBlobReference(MyFileUpload.FileName);
+				blobReference.UploadFromStream(MyFileUpload.FileContent);
+			}
+		}
+		```
+      1. Add `StorageAccountConnectionString` to your web.config file (you will find the connection string on Azure Portal in *Access Keys* section of the Storage Account blade). For production deployment you can use the *Application Settings* section of App Service to set the value.
+
+1. In yout Web Application, add a simple list of files stored in your blob container + simple download action.
+   1. Add following code snippet to your Default.aspx file:
+		```xml
+		<h1>Files</h1>
+		<asp:Repeater ID="FilesRepeater" ItemType="Microsoft.WindowsAzure.Storage.Blob.IListBlobItem" runat="server">
+			<ItemTemplate>
+				<asp:LinkButton ID="FileLink" CommandArgument="<%# Item.Uri %>" Text="<%# Item.Uri %>" OnCommand="FileLink_Command" runat="server" /><br />
+			</ItemTemplate>
+		</asp:Repeater>
+		```
+   2. Add following code snippet to your Default.aspx.cs file:
+		```csharp
+		protected override void OnPreRender(EventArgs e)
+		{
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var blobClient = storageAccount.CreateCloudBlobClient();
+			var containerReference = blobClient.GetContainerReference("test");
+
+			var blobs = containerReference.ListBlobs();
+			FilesRepeater.DataSource = blobs;
+			FilesRepeater.DataBind();
+		}
+
+		protected void FileLink_Command(object sender, CommandEventArgs e)
+		{
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var blobClient = storageAccount.CreateCloudBlobClient();
+
+			var blobReference = new CloudBlockBlob(new Uri((string)e.CommandArgument), blobClient);
+			blobReference.DownloadToStream(Response.OutputStream);
+		}
+		```
