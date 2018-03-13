@@ -171,3 +171,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 	![App Settings](images/AppSettings.png)
 
 1. Try the job by adding a row to EmailQueue table.
+
+## LAB3 - Application Insights [Jiøí Kanda]
+1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
+2. Install Application Install `Microsoft.ApplicationInsights.Web` NuGet Package to the Web Application project created in LAB1 and publish the project to Azure.
