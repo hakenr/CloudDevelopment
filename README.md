@@ -248,3 +248,51 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 			blobReference.DownloadToStream(Response.OutputStream);
 		}
 		```
+
+
+## LAB5 - Azure Storage - Queues
+[https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues](https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues)
+1. Send Message
+   1. `Default.aspx`
+	   ```xml
+		<asp:TextBox ID="QueueMessageTB" runat="server" />
+		<asp:Button ID="SendToQueueButton" Text="Send to Queue" OnClick="SendToQueueButton_Click" runat="server" />
+	   ```
+   1. `Default.aspx.cs`
+		```csharp
+		protected void SendToQueueButton_Click(object sender, EventArgs e)
+		{
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var queueClient = storageAccount.CreateCloudQueueClient();
+			var queueReference = queueClient.GetQueueReference("test"); // your queue name
+
+			var message = new CloudQueueMessage(QueueMessageTB.Text);
+			queueReference.AddMessage(message);
+		}
+		```
+2. Retrieve Message
+   1. `Default.aspx`
+	   ```xml
+		<asp:Label ID="QueueMessageLb" runat="server" />
+		<asp:Button ID="GetMessageButton" Text="Get from Queue" OnClick="GetMessageButton_Click" runat="server" />
+	   ```
+   1. `Default.aspx.cs`
+		```csharp
+		protected void GetMessageButton_Click(object sender, EventArgs e)
+		{
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var queueClient = storageAccount.CreateCloudQueueClient();
+			var queueReference = queueClient.GetQueueReference("test"); // your queue name
+
+			var message = queueReference.GetMessage();
+			if (message != null)
+			{
+				QueueMessageLb.Text = message.AsString;
+				queueReference.DeleteMessage(message);
+			}
+			else
+			{
+				QueueMessageLb.Text = "No message returned...";
+			}
+		}
+		```
