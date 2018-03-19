@@ -296,3 +296,16 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 			}
 		}
 		```
+        
+# LAB 6 - Service Bus
+- Official documentation: [https://azure.microsoft.com/en-us/services/service-bus/](https://azure.microsoft.com/en-us/services/service-bus)
+- [Presentation (PDF)](presentations/service_bus.pdf)
+
+### Step 1: Microsoft Azure
+In Microsoft Azure portal create new **Service Bus** namespace. Recommended pricing tier is Standard (allows to work with Topics)
+
+![](images/CreateServiceBus.png)
+
+### Step 2: Working with Queues and Topics
+- [How to create Queue and Send/Receive messages in .NET](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
+- [How to create Topic and Publish/Subscribe messages in .NET](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
