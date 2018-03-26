@@ -320,3 +320,10 @@ In Microsoft Azure portal create new **Redis** service. Recommended pricing tier
 
 ### Part 2: Managing Redis locally
 Download Redis Server installer from https://github.com/MicrosoftArchive/redis/releases and install with default settings. 
+
+### Part 3: Working with Redis in .NET application
+Pull changes from this repository to your computer. You should see new Redis solution folder with RedisCache project. It is a simple console application. 
+
+- Implement Redis client libraries for .NET
+- Implement caching (get and set operations)
+- Implement counter for each user request
