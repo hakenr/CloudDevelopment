@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8775E632-A2A1-4AA9-A54D-2824DEF8A917}</ProjectGuid>
+    <ProjectGuid>{9922AA4A-4424-4020-B837-EB4986135B92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Bus.Receiver</RootNamespace>
-    <AssemblyName>Bus.Receiver</AssemblyName>
+    <RootNamespace>Bus.Publisher</RootNamespace>
+    <AssemblyName>Bus.Publisher</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -114,9 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

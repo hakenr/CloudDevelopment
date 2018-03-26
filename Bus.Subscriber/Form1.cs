@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,20 +12,17 @@ using System.Windows.Forms;
 using Microsoft.Azure.ServiceBus;
 using Message = Microsoft.Azure.ServiceBus.Message;
 
-namespace Bus.Receiver
+namespace Bus.Subscriber
 {
-    public partial class Receiver : Form
+    public partial class Subscriber : Form
     {
-        private readonly QueueClient _queueClient;
+        private readonly ISubscriptionClient _subscriptionClient;
 
-        public Receiver()
+        public Subscriber()
         {
             InitializeComponent();
 
-            _queueClient = new QueueClient(ConfigurationManager.AppSettings.Get("ServiceBusConnectionString"), "demo")
-            {
-                PrefetchCount = 1,
-            };
+            _subscriptionClient = new SubscriptionClient(ConfigurationManager.AppSettings.Get("ServiceBusConnectionString"), "demotopic", "demosubscription");
         }
 
         private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs arg)
@@ -35,14 +37,14 @@ namespace Bus.Receiver
 
             Thread.Sleep(new Random(Guid.NewGuid().GetHashCode()).Next(1000, 2000));
 
-            await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
+            await _subscriptionClient.CompleteAsync(message.SystemProperties.LockToken);
         }
 
-        private void ReceiveButton_Click(object sender, EventArgs e)
+        private void SubscribeButton_Click(object sender, EventArgs e)
         {
-            ReceiveButton.Enabled = false;
+            SubscribeButton.Enabled = false;
 
-            _queueClient.RegisterMessageHandler(ProcessMessageAsync,
+            _subscriptionClient.RegisterMessageHandler(ProcessMessageAsync,
                 new MessageHandlerOptions(ExceptionReceivedHandler)
                 {
                     MaxConcurrentCalls = 1,

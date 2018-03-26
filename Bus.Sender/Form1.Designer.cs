@@ -1,6 +1,6 @@
 ﻿namespace Bus.Sender
 {
-    partial class Form1
+    partial class Sender
     {
         /// <summary>
         /// Required designer variable.
@@ -57,9 +57,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(23, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 25);
+            this.label2.Size = new System.Drawing.Size(100, 25);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Text zprávy";
+            this.label2.Text = "Message";
             // 
             // SendButton
             // 
@@ -67,22 +67,22 @@
             this.SendButton.Name = "SendButton";
             this.SendButton.Size = new System.Drawing.Size(175, 48);
             this.SendButton.TabIndex = 3;
-            this.SendButton.Text = "Odeslat zprávu";
+            this.SendButton.Text = "Send Message";
             this.SendButton.UseVisualStyleBackColor = true;
             this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
-            // Form1
+            // Sender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 300);
             this.Controls.Add(this.SendButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.MessageText);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Sender";
+            this.Text = "Sender";
             this.ResumeLayout(false);
             this.PerformLayout();
 
