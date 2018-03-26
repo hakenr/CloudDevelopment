@@ -301,11 +301,22 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 - Official documentation: [https://azure.microsoft.com/en-us/services/service-bus/](https://azure.microsoft.com/en-us/services/service-bus)
 - [Presentation (PDF)](presentations/service_bus.pdf)
 
-### Step 1: Microsoft Azure
+### Part 1: Microsoft Azure
 In Microsoft Azure portal create new **Service Bus** namespace. Recommended pricing tier is Standard (allows to work with Topics)
 
 ![](images/CreateServiceBus.png)
 
-### Step 2: Working with Queues and Topics
+### Part 2: Working with Queues and Topics
 - [How to create Queue and Send/Receive messages in .NET](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
 - [How to create Topic and Publish/Subscribe messages in .NET](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+
+# LAB 7 - Azure Redis
+- Official documentation: [https://docs.microsoft.com/en-us/azure/redis-cache/](https://docs.microsoft.com/en-us/azure/redis-cache/)
+- Recommended reading and video: [https://www.miroslavholec.cz/blog/uvod-do-redis-a-prakticke-navrhove-vzory--wug-praha-2017](https://www.miroslavholec.cz/blog/uvod-do-redis-a-prakticke-navrhove-vzory--wug-praha-2017)
+- [Presentation (PDF)](presentations/redis.pdf)
+
+### Part 1: Redis in Microsoft Azure
+In Microsoft Azure portal create new **Redis** service. Recommended pricing tier is Basic and for education reasons I would recommend to allow port 6379 (non SSL).
+
+### Part 2: Managing Redis locally
+Download Redis Server installer from https://github.com/MicrosoftArchive/redis/releases and install with default settings. 
