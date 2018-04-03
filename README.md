@@ -327,3 +327,12 @@ Pull changes from this repository to your computer. You should see new Redis sol
 - Implement Redis client libraries for .NET
 - Implement caching (get and set operations)
 - Implement counter for each user request
+
+
+# LAB 8 - Serverless Computing
+- Official documentation (Azure Functions): [Azure Functions documentation](https://docs.microsoft.com/en-us/azure/azure-functions/)
+- Official documentation (Azure Logic Apps): [Azure Logic Apps documentation](https://docs.microsoft.com/en-us/azure/logic-apps/)
+- Recommended reading: [Serverless Computing video + resources in CZ](https://www.miroslavholec.cz/blog/serverless-computing-global-azure-bootcamp-brno-2017)
+- [Presentation (PDF)](presentations/serverless.pdf)
+
+During LAB 8 you will create your own Logic App workflow. See [presentation](presentations/serverless.pdf) for more information.
