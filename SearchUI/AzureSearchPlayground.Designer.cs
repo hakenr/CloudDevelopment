@@ -142,7 +142,7 @@
             this.ResultGrid.Name = "ResultGrid";
             this.ResultGrid.ReadOnly = true;
             this.ResultGrid.RowTemplate.Height = 33;
-            this.ResultGrid.Size = new System.Drawing.Size(684, 439);
+            this.ResultGrid.Size = new System.Drawing.Size(892, 439);
             this.ResultGrid.TabIndex = 10;
             // 
             // ButtonIndex
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1496, 734);
+            this.ClientSize = new System.Drawing.Size(1690, 734);
             this.Controls.Add(this.ButtonSearch);
             this.Controls.Add(this.ButtonIndex);
             this.Controls.Add(this.ResultGrid);
