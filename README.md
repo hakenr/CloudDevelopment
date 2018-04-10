@@ -172,7 +172,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 1. Try the job by adding a row to EmailQueue table.
 
-## LAB3 - Application Insights [Jiøí Kanda]
+## LAB3 - Application Insights [Jiï¿½ï¿½ Kanda]
 1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
 	1. You can easily create one through navigating to your App Service - Application Insights blade:
 
@@ -336,3 +336,72 @@ Pull changes from this repository to your computer. You should see new Redis sol
 - [Presentation (PDF)](presentations/serverless.pdf)
 
 During LAB 8 you will create your own Logic App workflow. See [presentation](presentations/serverless.pdf) for more information.
+
+# LAB 9 - Azure Search
+- Official documentation (Azure Search): [Azure Search documentation](https://docs.microsoft.com/en-us/azure/search)
+- [Presentation (PDF)](presentations/azuresearch.pdf)
+
+### Part 1: Azure Search in Microsoft Azure
+In Microsoft Azure portal create new **Azure Search** service. You can choose Free pricing tier for our purposes. Provisioning of your service can take up to 15 minutes.
+
+### Part 2: Download Updated project from this Repo
+You should see new solution folder **AzureSearch**. There is a new WinForm project in this solution folder. Try to build it.
+
+![Solution Explorer](images/AzureSearchSolutionExplorer.png)
+
+### Part 3: Introduction to Azure Search
+[Presentation (PDF)](presentations/azuresearch.pdf)
+
+### Part 4: Setup SDK and application logic
+
+Step 1: Add new NuGet package Microsoft.Azure.Search to your project
+
+Step 2: Implement ButtonIndex_Click event
+
+	using (var serviceClient = new SearchServiceClient("name", new SearchCredentials("key")))
+	{
+	   var actions = new IndexAction<Article>[]
+	   {
+	      IndexAction.MergeOrUpload(article)
+	   };
+
+	   var batch = IndexBatch.New(actions);
+
+	   ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("articles");
+	   indexClient.Documents.Index(batch);
+	}
+
+Step 3: Create new Index in Azure Search
+
+- visit portal.azure.com and find your Azure Search service
+- choose Indexes item and click on the Add index button
+- define your Index (do not forget use all fields from Article class)
+
+![Azure Search Index](images/CreateAzureSearchIndex.png)
+ 
+Step 4: Implement ButtonSearch_Click event
+
+    using (var indexClient = new SearchIndexClient("name", "index", new SearchCredentials("key")))
+    {
+       var parameters = new SearchParameters()
+       {
+          // Select = new[] { "" }
+       };
+
+       var results = indexClient.Documents.Search<Article>(Keyword.Text, parameters);
+
+       ResultGrid.DataSource = results.Results.Select(x => new
+       {
+          Score = x.Score,
+          Title = x.Document.Title,
+          Category = x.Document.Category,
+          Text = x.Document.Text
+       }).OrderByDescending(x => x.Score).ToList();
+    }
+
+### Part 5: Optional tasks
+
+**Scoring profiles**: Create new default scoring profile so that Title will have higher priority in search results than other fields.
+
+**Scoring functions**: Extend your scoring profile with scoring functions. Lets say we want to prioritize newest items (use Created field).
+
