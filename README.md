@@ -347,7 +347,7 @@ In Microsoft Azure portal create new **Azure Search** service. You can choose Fr
 ### Part 2: Download Updated project from this Repo
 You should see new solution folder **AzureSearch**. There is a new WinForm project in this solution folder. Try to build it.
 
-![Solution Explorer](images/AzureSearchSolutionExplorer_.png)
+![Solution Explorer](images/AzureSearchSolutionExplorer.png)
 
 ### Part 3: Introduction to Azure Search
 [Presentation (PDF)](presentations/azuresearch.pdf)
@@ -377,7 +377,7 @@ Step 3: Create new Index in Azure Search
 - choose Indexes item and click on the Add index button
 - define your Index (do not forget use all fields from Article class)
 
-![Azure Search Index](images/CreateAzureSearchIndex_.png)
+![Azure Search Index](images/CreateAzureSearchIndex.png)
  
 Step 4: Implement ButtonSearch_Click event
 
