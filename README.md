@@ -49,7 +49,7 @@
 In this lab we will create and deploy a WebJob (background task) which connects to Azure SQL database. The job will run in scheduled time intervals, read data from a EmailQueue table and send e-mail via [SendGrid](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email) mail service (in future lab we might move the queue from Azure SQL to Azure Storage Queues).
 1. Create new Azure SQL server and database:
    1. Go to [Azure Portal](https://portal.azure.com) and use *Create Resource* button in left panel to create a new *SQL Database*.
-   2. Fill in the name and other properties of the DB + create a new SQL server to host the DB ()
+   2. Fill in the name and other properties of the DB + create a new SQL server to host the DB
 
       ![Create Sql Database](images/CreateSqlDatabase.png)
 
@@ -87,11 +87,11 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 	Note: In real scenario you don't want your applications to use the system administrator account to access the DB. Dedicated login account for each client should be created (with restricted access rights).
 
-   1. In *master* DB run the following SQL query
+   1. In **master** DB run the following SQL query
    ```sql
 	CREATE LOGIN CloudDevLogin WITH PASSWORD = '***new password***'
    ```
-   2. In your application DB run following SQL query
+   2. In your **application DB** run following SQL query
    ```sql
 	CREATE USER CloudDevUser FOR LOGIN CloudDevLogin WITH DEFAULT_SCHEMA = dbo
 	GO
@@ -173,7 +173,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 1. Try the job by adding a row to EmailQueue table.
 
-## LAB3 - Application Insights [Ji�� Kanda]
+## LAB3 - Application Insights [Jiří Kanda]
 1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
 	1. You can easily create one through navigating to your App Service - Application Insights blade:
 
