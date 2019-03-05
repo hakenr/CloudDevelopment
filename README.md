@@ -255,6 +255,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 ## LAB5 - Azure Storage - Queues
 [https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues](https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues)
+1. Create a new queue within the storage account created in LAB4.
 1. Install `Microsoft.Azure.Storage.Queue` NuGet package to both WebApplication project in your solution.
 1. Send Message
    1. `Default.aspx`
