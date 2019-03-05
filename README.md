@@ -192,7 +192,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 	![Storage Account New Blob Container](images/StorageAccount-NewBlobContainer.png)
 
-1. Install `Windows.AzureStorage` NuGet package to both WebApplication and WebJob projects in your solution.
+1. Install `Microsoft.Azure.Storage.Blob` NuGet package to both WebApplication and WebJob projects in your solution.
 
 1. In your Web Application, add a simple form which uploads a file to the blob container you created earlier.
 	1. Add *FileUpload* control and a *Button* to your `Default.aspx` page
@@ -253,6 +253,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 ## LAB5 - Azure Storage - Queues
 [https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues](https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues)
+1. Install `Microsoft.Azure.Storage.Queue` NuGet package to both WebApplication project in your solution.
 1. Send Message
    1. `Default.aspx`
 	   ```xml
