@@ -206,9 +206,9 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		{
 			if (MyFileUpload.HasFile)
 			{
-				var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
-				var blobClient = storageAccount.CreateCloudBlobClient();
-				var containerReference = blobClient.GetContainerReference("test"); // namo of your container
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageAccountConnectionString"].ConnectionString);
+			var blobClient = storageAccount.CreateCloudBlobClient();
+			var containerReference = blobClient.GetContainerReference("test"); // name of your container
 
 				var blobReference = containerReference.GetBlockBlobReference(MyFileUpload.FileName);
 				blobReference.UploadFromStream(MyFileUpload.FileContent);
@@ -216,6 +216,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		}
 		```
       1. Add `StorageAccountConnectionString` to your web.config file (you will find the connection string on Azure Portal in *Access Keys* section of the Storage Account blade). For production deployment you can use the *Application Settings* section of App Service to set the value.
+      1. You can test the upload now. Try to use [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) to verify file existence.
 
 1. In yout Web Application, add a simple list of files stored in your blob container + simple download action.
    1. Add following code snippet to your Default.aspx file:
@@ -231,7 +232,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		```csharp
 		protected override void OnPreRender(EventArgs e)
 		{
-			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageAccountConnectionString"].ConnectionString);
 			var blobClient = storageAccount.CreateCloudBlobClient();
 			var containerReference = blobClient.GetContainerReference("test");
 
@@ -242,7 +243,8 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 		protected void FileLink_Command(object sender, CommandEventArgs e)
 		{
-			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageAccountConnectionString"].ConnectionString);
+
 			var blobClient = storageAccount.CreateCloudBlobClient();
 
 			var blobReference = new CloudBlockBlob(new Uri((string)e.CommandArgument), blobClient);
@@ -264,7 +266,8 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		```csharp
 		protected void SendToQueueButton_Click(object sender, EventArgs e)
 		{
-			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageAccountConnectionString"].ConnectionString);
+
 			var queueClient = storageAccount.CreateCloudQueueClient();
 			var queueReference = queueClient.GetQueueReference("test"); // your queue name
 
@@ -282,7 +285,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		```csharp
 		protected void GetMessageButton_Click(object sender, EventArgs e)
 		{
-			var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccountConnectionString"]);
+		var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageAccountConnectionString"].ConnectionString);
 			var queueClient = storageAccount.CreateCloudQueueClient();
 			var queueReference = queueClient.GetQueueReference("test"); // your queue name
 
