@@ -173,16 +173,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 1. Try the job by adding a row to EmailQueue table.
 
-## LAB3 - Application Insights [Jiří Kanda]
-1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
-	1. You can easily create one through navigating to your App Service - Application Insights blade:
-
-		![App Insights](images/AppInsights.png)
-
-	2. Check *Application Settings* section - there is a new `APPINSIGHTS_INSTRUMENTATIONKEY` setting added automatically (If not, create one on your own - you can find the instrumentation key in *Properties* section of the Application Insights service.)
-2. Install Application Install `Microsoft.ApplicationInsights.Web` NuGet Package to the Web Application project created in LAB1 and publish the project to Azure.
-
-## LAB4 - Azure Storage Account - Blobs
+## LAB3 - Azure Storage Account - Blobs
 [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows)
 1. In Azure Portal create a new Azure Storage Account - *StorageV2 (general purpose v2)*. Familiarize yourself with the configuration options available:
 
@@ -253,7 +244,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		```
 
 
-## LAB5 - Azure Storage - Queues
+## LAB4 - Azure Storage - Queues [OPTIONAL]
 [https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues](https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues)
 1. Create a new queue within the storage account created in LAB4.
 1. Install `Microsoft.Azure.Storage.Queue` NuGet package to both WebApplication project in your solution.
@@ -302,6 +293,16 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 			}
 		}
 		```
+
+## LAB5 - Application Insights [Jiří Kanda]
+1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
+	1. You can easily create one through navigating to your App Service - Application Insights blade:
+
+		![App Insights](images/AppInsights.png)
+
+	2. Check *Application Settings* section - there is a new `APPINSIGHTS_INSTRUMENTATIONKEY` setting added automatically (If not, create one on your own - you can find the instrumentation key in *Properties* section of the Application Insights service.)
+2. Install Application Install `Microsoft.ApplicationInsights.Web` NuGet Package to the Web Application project created in LAB1 and publish the project to Azure.
+
         
 # LAB 6 - Service Bus
 - Official documentation: [https://azure.microsoft.com/en-us/services/service-bus/](https://azure.microsoft.com/en-us/services/service-bus)
