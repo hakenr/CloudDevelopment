@@ -222,7 +222,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
    1. Add following code snippet to your Default.aspx file:
 		```xml
 		<h1>Files</h1>
-		<asp:Repeater ID="FilesRepeater" ItemType="Microsoft.WindowsAzure.Storage.Blob.IListBlobItem" runat="server">
+		<asp:Repeater ID="FilesRepeater" ItemType="Microsoft.Azure.Storage.Blob.IListBlobItem" runat="server">
 			<ItemTemplate>
 				<asp:LinkButton ID="FileLink" CommandArgument="<%# Item.Uri %>" Text="<%# Item.Uri %>" OnCommand="FileLink_Command" runat="server" /><br />
 			</ItemTemplate>
