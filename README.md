@@ -1,6 +1,7 @@
 # NSWI152 - Cloud Development
+Labs for Cloud Applications Development (NSWI152) course @ MFF UK.
 
-## LAB 1 - Create & Deploy simple Web Site to Azure App Service
+# LAB 1 - Create & Deploy simple Web Site to Azure App Service
 1. Create a super-simple web application in Visual Studio. Follow the instructions below or pick a web project template of your preference:
 	1. Create new Visual Studio project using *ASP.NET Web Application (.NET Framework)* template (as *Empty* web application with *Web Forms* core references).
 	1. Add a new item to the root folder of the project - *Web Form* - Default.aspx
@@ -45,7 +46,7 @@
    1. Change anything in your website and push the commit to GitHub - the application should be redeployed within few seconds.
 
 
-## LAB 2 - Web Job with Azure SQL connectivity
+# LAB 2 - Web Job with Azure SQL connectivity
 In this lab we will create and deploy a WebJob (background task) which connects to Azure SQL database. The job will run in scheduled time intervals, read data from a EmailQueue table and send e-mail via [SendGrid](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email) mail service (in future lab we might move the queue from Azure SQL to Azure Storage Queues).
 1. Create new Azure SQL server and database:
    1. Go to [Azure Portal](https://portal.azure.com) and use *Create Resource* button in left panel to create a new *SQL Database*.
@@ -173,7 +174,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 
 1. Try the job by adding a row to EmailQueue table.
 
-## LAB3 - Application Insights [Jiří Kanda]
+# LAB3 - Application Insights [Jiří Kanda]
 1. In Azure Portal create a new Application Insights service associated to the App Service created in LAB1.
 	1. You can easily create one through navigating to your App Service - Application Insights blade:
 
@@ -182,7 +183,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 	2. Check *Application Settings* section - there is a new `APPINSIGHTS_INSTRUMENTATIONKEY` setting added automatically (If not, create one on your own - you can find the instrumentation key in *Properties* section of the Application Insights service.)
 2. Install Application Install `Microsoft.ApplicationInsights.Web` NuGet Package to the Web Application project created in LAB1 and publish the project to Azure.
 
-## LAB4 - Azure Storage Account - Blobs
+# LAB4 - Azure Storage Account - Blobs
 [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows)
 1. In Azure Portal create a new Azure Storage Account - *StorageV2 (general purpose v2)*. Familiarize yourself with the configuration options available:
 
@@ -253,7 +254,7 @@ In this lab we will create and deploy a WebJob (background task) which connects 
 		```
 
 
-## LAB5 - Azure Storage - Queues
+# [OPTIONAL] LAB5 - Azure Storage - Queues
 [https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues](https://docs.microsoft.com/en-us/azure/storage/queues/storage-dotnet-how-to-use-queues)
 1. Create a new queue within the storage account created in LAB4.
 1. Install `Microsoft.Azure.Storage.Queue` NuGet package to both WebApplication project in your solution.
