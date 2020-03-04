@@ -1,5 +1,7 @@
 # NSWI152 - Cloud Development
 Labs for Cloud Applications Development (NSWI152) course @ MFF UK.
+* Robert Haken & Jiří Kanda = this repo
+* Ondřej Václavek - https://github.com/vaclavek/CloudDevelopment
 
 # LAB 1 - Create & Deploy simple Web Site to Azure App Service
 1. Create a super-simple web application in Visual Studio. Follow the instructions below or pick a web project template of your preference:
