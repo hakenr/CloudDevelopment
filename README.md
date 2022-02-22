@@ -1,4 +1,7 @@
-# NSWI152 - Cloud Development
+# NSWI152 - Cloud Development [!ARCHIVED!]
+
+> :warning: **WARNING** This repository is archived. New courseware: **https://github.com/havit/CloudApplicationsDevelopment**
+
 Labs for Cloud Applications Development (NSWI152) course @ MFF UK.
 * Robert Haken & Jiří Kanda = this repo
 * Ondřej Václavek - https://github.com/vaclavek/CloudDevelopment
