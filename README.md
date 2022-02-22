@@ -1,4 +1,4 @@
-# NSWI152 - Cloud Development [!ARCHIVED!]
+# NSWI152 - Cloud Development [:warning: 2018-2021 :warning: ARCHIVED :warning:]
 
 > :warning: **WARNING** This repository is archived. New courseware: **https://github.com/havit/CloudApplicationsDevelopment**
 
